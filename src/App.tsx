@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { ComboBox } from "./components/ComboBox";
+import { Container } from "./components/Container";
 
 function App() {
   return (
     <div className="App">
-      <ComboBox />
+      <Container />
     </div>
   );
 }
