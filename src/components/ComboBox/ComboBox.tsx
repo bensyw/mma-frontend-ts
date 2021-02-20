@@ -4,6 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FilmOptionType } from "../../types/FilmOptionType";
 import { fuzzySearch } from "../../utilities";
+import throttle from 'lodash/throttle';
 
 const styles = { width: 300 };
 
@@ -18,6 +19,14 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
     const [options, setOptions] = React.useState<FilmOptionType[]>([]);
     const loading = open && options.length === 0;
 
+    const fetch = throttle(async (inputValue: string, active: boolean) => {
+        const response = await fuzzySearch(inputValue);
+        const movies = response.map(ref => ref.item);
+        if (active) {
+            setOptions(movies);
+        }
+    }, 200)
+
     useEffect(() => {
         let active = true;
 
@@ -25,18 +34,12 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
             return undefined;
         }
 
-        (async () => {
-            const response = await fuzzySearch(inputValue);
-            const movies = response.map(ref => ref.item);
-            if (active) {
-                setOptions(movies);
-            }
-        })();
+        fetch(inputValue, active);
 
         return () => {
             active = false;
         }
-    }, [loading, inputValue])
+    }, [loading, inputValue, fetch])
 
     useEffect(() => {
         if (!open) {
