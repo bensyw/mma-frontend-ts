@@ -7,6 +7,7 @@ import { FighterType } from "../../types/FighterType";
 export const Container: React.FunctionComponent<{}> = () => {
     const [fighterA, setFighterA] = useState<FighterType | null>(null);
     const [fighterB, setFighterB] = useState<FighterType | null>(null);
+    const [message, setMessage] = useState<string>('MMA Math')
 
     const handleOnChangeFighterA = (event: React.ChangeEvent<{}>, newValue: FighterType | null) => {
         setFighterA(newValue);
@@ -16,14 +17,19 @@ export const Container: React.FunctionComponent<{}> = () => {
         setFighterB(newValue);
     };
 
-    const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>) => { }
+    const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const fighterAFullName = fighterA != null ? `${fighterA.firstName} ${fighterA.lastName}` : 'null';
+        const fighterBFullName = fighterB != null ? `${fighterB.firstName} ${fighterB.lastName}` : 'null';
+        const newMessage = `Prove that ${fighterAFullName} can beat ${fighterBFullName}`;
+        setMessage(newMessage);
+    }
 
     return (
         <>
             <ComboBox handleOnChange={handleOnChangeFighterA} value={fighterA} />
             <ComboBox handleOnChange={handleOnChangeFighterB} value={fighterB} />
             <QueryButton handleOnClick={handleOnClick} />
-            <QueryResult />
+            <QueryResult message={message} />
         </>
     )
 }
