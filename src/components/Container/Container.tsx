@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComboBox } from "../ComboBox";
 import { QueryButton } from "../QueryButton";
+import { QueryResult } from "../QueryResult";
 
 export const Container: React.FunctionComponent<{}> = () => {
     return (
@@ -8,6 +9,7 @@ export const Container: React.FunctionComponent<{}> = () => {
             <ComboBox />
             <ComboBox />
             <QueryButton />
+            <QueryResult />
         </>
     )
 }
