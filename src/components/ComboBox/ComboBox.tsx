@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { FilmOptionType } from "../../types/FilmOptionType";
 import { fuzzySearch } from "../../utilities";
 
@@ -56,6 +57,8 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
             <div>{`inputValue: '${inputValue}'`}</div>
             <br />
             <Autocomplete
+                id='fighter-search-combo-box'
+                style={styles}
                 open={open}
                 onOpen={() => {
                     setOpen(true);
@@ -67,12 +70,24 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
                 onChange={handleOnChange}
                 inputValue={inputValue}
                 onInputChange={handleOnInputChange}
-                id='fighter-search-combo-box'
                 options={options}
                 getOptionLabel={(option) => option.title}
-                style={styles}
+                getOptionSelected={(option, value) => option.title === value.title}
+                loading={loading}
                 renderInput={(params) =>
-                    <TextField {...params} label="Fighter Name" variant="outlined" />}
+                    <TextField {...params}
+                        label="Fighter Name"
+                        variant="outlined"
+                        InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                                <React.Fragment>
+                                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                                    {params.InputProps.endAdornment}
+                                </React.Fragment>
+                            ),
+                        }}
+                    />}
             />
         </div>
     )
