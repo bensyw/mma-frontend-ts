@@ -16,11 +16,13 @@ export const Container: React.FunctionComponent<{}> = () => {
         setFighterB(newValue);
     };
 
+    const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>) => { }
+
     return (
         <>
             <ComboBox handleOnChange={handleOnChangeFighterA} value={fighterA} />
             <ComboBox handleOnChange={handleOnChangeFighterB} value={fighterB} />
-            <QueryButton />
+            <QueryButton handleOnClick={handleOnClick} />
             <QueryResult />
         </>
     )

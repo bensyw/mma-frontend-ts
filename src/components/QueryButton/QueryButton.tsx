@@ -12,14 +12,18 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const QueryButton: React.FunctionComponent<{}> = () => {
+interface QueryButtonProps {
+    handleOnClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export const QueryButton: React.FunctionComponent<QueryButtonProps> = ({ handleOnClick }) => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={handleOnClick}>
                 Primary
-        </Button>
+            </Button>
         </div>
     );
 }
