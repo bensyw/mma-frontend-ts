@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js'
 import { FilmOptionType } from "../types";
+import { FighterType } from "../types";
 
 /**
  * Sleep
@@ -134,3 +135,11 @@ const top100Films: FilmOptionType[] = [
     { title: '3 Idiots', year: 2009 },
     { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
+
+const fighters: FighterType[] = [
+    {
+        firstName: "Niina",
+        lastName: "Aaltonen",
+        fighterId: "3043549",
+    }
+]
