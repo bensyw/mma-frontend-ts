@@ -36,7 +36,7 @@ export const fighterGraph: FighterGraphType =
 {
     "1": ['2', '4'],
     "2": ['3', '5'],
-    "3": ['3'],
+    "3": [],
     "4": ['2', '5'],
     "5": ['3'],
 }

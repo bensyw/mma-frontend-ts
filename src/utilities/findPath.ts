@@ -13,7 +13,7 @@ const bfs = (startId: string, endId: string): string[] => {
         path: [startId]
     }];
     const visited = new Set();
-    while (queue) {
+    while (queue.length) {
         const { vertex, path } = queue.shift() || { vertex: '0', path: [] }; // In case undefined
         visited.add(vertex);
         for (const node of fighterGraph[vertex]) {
@@ -47,7 +47,6 @@ const pathToFighters = (path: string[]): FighterType[] => {
     const fighterPath = path.map(vertex => {
         return (fighters.find(fighter => fighter.fighterId === vertex) || fighterError)
     });
-    console.log(fighterPath)
     return fighterPath
 }
 
