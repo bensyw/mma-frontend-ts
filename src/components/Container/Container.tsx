@@ -3,6 +3,7 @@ import { ComboBox } from "../ComboBox";
 import { QueryButton } from "../QueryButton";
 import { QueryResult } from "../QueryResult";
 import { FighterType } from "../../types/FighterType";
+import { mmaMath } from "../../utilities/";
 
 export const Container: React.FunctionComponent<{}> = () => {
     const [fighterA, setFighterA] = useState<FighterType | null>(null);
@@ -21,6 +22,10 @@ export const Container: React.FunctionComponent<{}> = () => {
         const fighterAFullName = fighterA != null ? `${fighterA.fighterName}` : 'null';
         const fighterBFullName = fighterB != null ? `${fighterB.fighterName}` : 'null';
         const newMessage = `Prove that ${fighterAFullName} can beat ${fighterBFullName}`;
+        if (fighterA && fighterB) {
+            const result = mmaMath(fighterA?.fighterId, fighterB?.fighterId);
+            console.log(result);
+        }
         setMessage(newMessage);
     }
 
