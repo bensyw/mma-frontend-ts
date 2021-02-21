@@ -1,4 +1,5 @@
 import { FighterType } from '../types';
+import { FighterGraphType } from '../types';
 
 /**
  * Mock data.
@@ -30,3 +31,12 @@ export const fighters: FighterType[] = [
         winOver: ['3'],
     },
 ]
+
+export const fighterGraph: FighterGraphType =
+{
+    "1": ['2', '4'],
+    "2": ['3', '5'],
+    "3": ['3'],
+    "4": ['2', '5'],
+    "5": ['3'],
+}
