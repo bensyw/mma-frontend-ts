@@ -1,4 +1,4 @@
-import { FighterType } from "../types";
+import { FighterType } from '../types';
 
 /**
  * Mock data.
@@ -6,30 +6,27 @@ import { FighterType } from "../types";
 export const fighters: FighterType[] = [
     {
         fighterName: 'A',
-        fighterId: "1",
+        fighterId: '1',
+        winOver: ['2', '4'],
     },
     {
         fighterName: 'B',
-        fighterId: "2",
+        fighterId: '2',
+        winOver: ['3', '5'],
     },
     {
         fighterName: 'C',
-        fighterId: "3",
+        fighterId: '3',
+        winOver: [],
     },
     {
         fighterName: 'D',
-        fighterId: "4",
+        fighterId: '4',
+        winOver: ['2', '5'],
     },
     {
         fighterName: 'E',
-        fighterId: "5",
-    },
-    {
-        fighterName: 'F',
-        fighterId: "6",
-    },
-    {
-        fighterName: 'G',
-        fighterId: "7",
+        fighterId: '5',
+        winOver: ['3'],
     },
 ]
