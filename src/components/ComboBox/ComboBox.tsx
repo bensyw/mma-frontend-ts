@@ -57,7 +57,7 @@ export const ComboBox: React.FunctionComponent<ComboBoxProps> = ({ handleOnChang
 
     return (
         <div>
-            <div>{`value: ${value != null ? `'{firstName: ${value.firstName}, lastName: ${value.lastName}}'` : 'null'}`}</div>
+            <div>{`value: ${value != null ? `'${value.fighterName}'` : 'null'}`}</div>
             <div>{`inputValue: '${inputValue}'`}</div>
             <br />
             <Autocomplete
@@ -75,7 +75,7 @@ export const ComboBox: React.FunctionComponent<ComboBoxProps> = ({ handleOnChang
                 inputValue={inputValue}
                 onInputChange={handleOnInputChange}
                 options={options}
-                getOptionLabel={(option) => `${option.firstName} ${option.lastName}`}
+                getOptionLabel={(option) => `${option.fighterName}`}
                 loading={loading}
                 renderInput={(params) =>
                     <TextField {...params}

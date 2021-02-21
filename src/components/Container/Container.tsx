@@ -18,8 +18,8 @@ export const Container: React.FunctionComponent<{}> = () => {
     };
 
     const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const fighterAFullName = fighterA != null ? `${fighterA.firstName} ${fighterA.lastName}` : 'null';
-        const fighterBFullName = fighterB != null ? `${fighterB.firstName} ${fighterB.lastName}` : 'null';
+        const fighterAFullName = fighterA != null ? `${fighterA.fighterName}` : 'null';
+        const fighterBFullName = fighterB != null ? `${fighterB.fighterName}` : 'null';
         const newMessage = `Prove that ${fighterAFullName} can beat ${fighterBFullName}`;
         setMessage(newMessage);
     }

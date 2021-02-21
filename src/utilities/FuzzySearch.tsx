@@ -17,10 +17,7 @@ const sleep = (delay = 0) => {
  */
 export const fuzzySearch = async (pattern: string) => {
     const options = {
-        keys: [
-            "firstName",
-            "lastName",
-        ]
+        keys: ["fighterName"]
     };
     const fuse = new Fuse(fighters, options);
     await sleep(1e3); // Fake async fetch
@@ -33,28 +30,31 @@ export const fuzzySearch = async (pattern: string) => {
 
 const fighters: FighterType[] = [
     {
-        firstName: "Niina",
-        lastName: "Aaltonen",
-        fighterId: "3043549",
+        fighterName: 'A',
+        fighterId: "1",
     },
     {
-        firstName: "Tom",
-        lastName: "Aaron",
-        fighterId: "2504991",
+        fighterName: 'B',
+        fighterId: "2",
     },
     {
-        firstName: "Joshua",
-        lastName: "Aarons",
-        fighterId: "3088828",
+        fighterName: 'C',
+        fighterId: "3",
     },
     {
-        firstName: "Mike",
-        lastName: "Aarts",
-        fighterId: "3089919",
+        fighterName: 'D',
+        fighterId: "4",
     },
     {
-        firstName: "Zyad",
-        lastName: "Abada",
-        fighterId: "2511451",
+        fighterName: 'E',
+        fighterId: "5",
+    },
+    {
+        fighterName: 'F',
+        fighterId: "6",
+    },
+    {
+        fighterName: 'G',
+        fighterId: "7",
     },
 ]
