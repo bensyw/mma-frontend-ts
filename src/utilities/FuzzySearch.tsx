@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js'
-import { FighterType } from "../types";
+import { fighters } from "./data";
 
 /**
  * Sleep
@@ -17,44 +17,9 @@ const sleep = (delay = 0) => {
  */
 export const fuzzySearch = async (pattern: string) => {
     const options = {
-        keys: [
-            "firstName",
-            "lastName",
-        ]
+        keys: ["fighterName"]
     };
     const fuse = new Fuse(fighters, options);
     await sleep(1e3); // Fake async fetch
     return fuse.search(pattern)
 }
-
-/**
- * Mock data.
- */
-
-const fighters: FighterType[] = [
-    {
-        firstName: "Niina",
-        lastName: "Aaltonen",
-        fighterId: "3043549",
-    },
-    {
-        firstName: "Tom",
-        lastName: "Aaron",
-        fighterId: "2504991",
-    },
-    {
-        firstName: "Joshua",
-        lastName: "Aarons",
-        fighterId: "3088828",
-    },
-    {
-        firstName: "Mike",
-        lastName: "Aarts",
-        fighterId: "3089919",
-    },
-    {
-        firstName: "Zyad",
-        lastName: "Abada",
-        fighterId: "2511451",
-    },
-]

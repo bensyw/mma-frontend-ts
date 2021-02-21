@@ -8,11 +8,15 @@ import throttle from 'lodash/throttle';
 
 const styles = { width: 300 };
 
+interface ComboBoxProps {
+    handleOnChange: (event: React.ChangeEvent<{}>, newValue: FighterType | null) => void;
+    value: FighterType | null;
+};
+
 /**
  * A search field for fighter names, with autocompletion.
  */
-export const ComboBox: React.FunctionComponent<{}> = () => {
-    const [value, setValue] = useState<FighterType | null>(null);
+export const ComboBox: React.FunctionComponent<ComboBoxProps> = ({ handleOnChange, value }) => {
     const [inputValue, setInputValue] = useState('');
     // For async requests
     const [open, setOpen] = React.useState(false);
@@ -47,16 +51,13 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
         }
     }, [open]);
 
-    const handleOnChange = (event: React.ChangeEvent<{}>, newValue: FighterType | null) => {
-        setValue(newValue);
-    };
     const handleOnInputChange = (event: React.ChangeEvent<{}>, newInputValue: string) => {
         setInputValue(newInputValue);
     };
 
     return (
         <div>
-            <div>{`value: ${value != null ? `'{firstName: ${value.firstName}, lastName: ${value.lastName}}'` : 'null'}`}</div>
+            <div>{`value: ${value != null ? `'${value.fighterName}'` : 'null'}`}</div>
             <div>{`inputValue: '${inputValue}'`}</div>
             <br />
             <Autocomplete
@@ -74,7 +75,7 @@ export const ComboBox: React.FunctionComponent<{}> = () => {
                 inputValue={inputValue}
                 onInputChange={handleOnInputChange}
                 options={options}
-                getOptionLabel={(option) => `${option.firstName} ${option.lastName}`}
+                getOptionLabel={(option) => `${option.fighterName}`}
                 loading={loading}
                 renderInput={(params) =>
                     <TextField {...params}

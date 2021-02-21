@@ -2,7 +2,6 @@
  * Fighter matadata
  */
 export interface FighterType {
-    firstName: string;
-    lastName: string;
+    fighterName: string;
     fighterId: string;
 }
